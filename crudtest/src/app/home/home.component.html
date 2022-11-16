@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <table class="table text-align-center" >
+        <thead>
+            <tr>
+
+                <th>Sr. No.</th>
+                <th>Name</th>
+                <th>email</th>
+                <th>Action</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users | paginate: {itemsPerPage: 2, currentPage: p }">
+                <td> {{user.id}} </td>
+                <td> {{user.first_name}} </td>
+                <td> {{user.email}} </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deletUser(user.id)" >Delete</button> &nbsp;
+                    <button class="btn btn-primary" (click)="editUser(user.id)" >Edit</button>
+                </td>
+            </tr>
+        </tbody>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table>
+</div>
